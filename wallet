@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+JAR_PATH="$SCRIPT_DIR/target/wallet-transfers-1.0.0.jar"
+if [ ! -f "$JAR_PATH" ]; then
+    echo "Building project..."
+    mvn package -DskipTests
+fi
+java -jar "$JAR_PATH" "$@"
